@@ -2,7 +2,7 @@
 # @Author: Ariel Torti
 # @Date:   2018-08-23 13:42:02
 # @Last Modified by:   Ariel Torti
-# @Last Modified time: 2018-08-23 13:57:40
+# @Last Modified time: 2019-02-17 15:35:42
 # @GitHub: github.com/maks500
 """
 Simple script to retrieve a subdomains from websites.
@@ -60,7 +60,7 @@ def main(domain_list):
             logger.info("{}'s information is not available.".format(d))
 
         json_res = res.text.replace("}{", "},{").encode("utf8")
-        data = json.loads("[{}]".format(json_res))
+        data = json.loads("{}".format(json_res))
 
         for k in data:
             subdomains.add(k['name_value'])
@@ -71,7 +71,7 @@ def main(domain_list):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     args = parse_arguments(parser)
-    
+
     logger.setLevel(args.logging_level)
 
     # If no domains were passed exit.
